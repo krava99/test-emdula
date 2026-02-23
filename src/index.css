@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+.inter-text {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #f7f7f7;
+}
+
+body {
+  width: 100%;
+  max-width: 706px;
+  margin: 0 auto;
+}
+
+.gray-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(253, 252, 252, 0.5);
+}
+
+/* Secondery button */
+
+/* Primary */
+@layer components {
+  .btn-primary {
+    @apply text-[#0c0614] px-4.5 py-3 rounded-[100px] bg-[#e9ac32] cursor-pointer transition-colors duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply bg-[#d18e1b];
+  }
+
+  .btn-primary:active {
+    @apply bg-[#a86415];
+  }
+
+  .btn-primary:disabled {
+    @apply bg-[#8f8c84] cursor-not-allowed opacity-70;
+  }
+}
+
+/* Second  */
+@layer components {
+  .btn-second {
+    @apply text-[#e9ac32] px-4.5 py-3 rounded-[100px] border-2 border-[#e9ac32] bg-[rgba(12,6,20,0.5)] cursor-pointer transition-colors duration-200 relative;
+  }
+
+  .btn-second:hover {
+    @apply text-[#d18e1b] border-[#d18e1b];
+  }
+
+  .btn-second:active {
+    @apply border-[#a86415];
+  }
+
+  .btn-second:disabled {
+    @apply text-[#8f8c84] border-[#8f8c84] cursor-not-allowed opacity-70;
+  }
+
+  .btn-second.today::after {
+    content: ".";
+    @apply absolute bottom-0;
+    /* position: 'absolute'; */
+  }
+
+  .btn-second.selected {
+    @apply bg-[#fed172] text-[A86415];
+  }
+}
+
+@layer components {
+  .section-border {
+    @apply bg-[#17121D] py-7 px-43.75 rounded-b-2xl border-[3px] border-[rgba(253,252,252,0.25)];
+  }
+}
