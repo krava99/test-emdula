@@ -37,7 +37,7 @@ body {
   }
 
   .btn-primary:disabled {
-    @apply bg-[#8f8c84] cursor-not-allowed opacity-70;
+    @apply bg-[#8f8c84] cursor-not-allowed;
   }
 }
 
@@ -73,5 +73,27 @@ body {
 @layer components {
   .section-border {
     @apply bg-[#17121D] py-7 px-43.75 rounded-b-2xl border-[3px] border-[rgba(253,252,252,0.25)];
+  }
+}
+
+@layer components {
+  .time-btn {
+    @apply border-2 border-[#fabf42] text-[#fabf42] rounded-lg px-6 py-2 w-59 h-10;
+  }
+  .time-btn:hover {
+    @apply border-[#d18e1b] text-[#d18e1b];
+  }
+  .time-btn:active {
+    @apply border-[rgba(177,96,9,0.2)] text-[rgba(177,96,9,0.2)];
+  }
+
+  .time-btn.selected {
+    @apply bg-[#fabf42] text-[#0C0614];
+  }
+}
+
+@layer components {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

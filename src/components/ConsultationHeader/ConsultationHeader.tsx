@@ -1,7 +1,14 @@
-export const ConsultationHeader = () => {
+import { format } from "date-fns";
+import type { HeaderProps } from "../../types/types";
+
+export const ConsultationHeader = ({ date }: HeaderProps) => {
+  const formatted = date
+    ? `${format(date, "HH:mm")} - ${format(date, "HH:mm")} , ${format(date, "EEEE, MMMM d, yyyy")}`
+    : "Select date and time";
+
   return (
     <section className="bg-[#17121D] rounded-t-2xl border-[3px] border-[rgba(253,252,252,0.25)]">
-      <div className=" text-center  mx-16 py-6">
+      <div className=" text-center mx-16 py-6">
         <h1 className="mb-6 text-[32px]">Consultation</h1>
         <div className="flex gap-4 gray-text mb-6">
           <div className=" flex gap-2">
@@ -28,7 +35,7 @@ export const ConsultationHeader = () => {
               alt="calendar-icon"
               className="w-5 h-5"
             />
-            <p>10:00 - 10:30, Thuesday, Februay 12, 2026</p>
+            <p>{formatted}</p>
           </div>
           <div className="flex gap-2 items-center">
             <img

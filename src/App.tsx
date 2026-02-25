@@ -1,31 +1,9 @@
 import { useReducer } from "react";
-import "./App.css";
 import Calendar from "./components/Calendar/Calendar";
-import { ConsultationCalendar } from "./components/ConsultationCalendar/ConsultationCalendar";
+
 import { ConsultationForm } from "./components/ConsultationForm/ConsultationForm";
 import { ConsultationHeader } from "./components/ConsultationHeader/ConsultationHeader";
-
-export type Page = "calendar" | "details" | "result";
-
-type Details = {
-  email: string;
-};
-
-interface State {
-  date: Date | null;
-  details: Details | null;
-  page: Page;
-}
-
-const initialState: State = {
-  date: null,
-  details: null,
-  page: "calendar",
-};
-
-type Action =
-  | { type: "SET_DATE"; payload: Date }
-  | { type: "SET_DETAILS"; payload: Details };
+import { initialState, type Action, type State } from "./types/types";
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -54,17 +32,12 @@ function App() {
 
   return (
     <div className="mt-10 inter-text ">
+      <ConsultationHeader date={state.date} />
       {state.page === "calendar" && <Calendar onSubmit={setDate} />}
-      {/* {state.page === "details" && <Details />}
-      {state.page === "result" && <Result />} */}
 
-      {/* <ConsultationHeader />
-      <ConsultationCalendar /> */}
-      {/* <ConsultationForm /> */}
-
-      {/* 
-
-      */}
+      {state.page === "details" && (
+        <ConsultationForm selectedDate={state.date} />
+      )}
     </div>
   );
 }
