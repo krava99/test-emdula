@@ -31,17 +31,24 @@ export type GridProps = {
   current: Date;
   onSelect: (date: Date | null) => void;
   selected: Date | null;
+  timezone: string;
+  onTimezoneChange: (tz: string) => void;
 };
 
 export type FormProps = {
   selectedDate: Date | null;
+  timezone: string;
 };
 
 export type HeaderProps = {
   date: Date | null;
+  timezone: string;
 };
-
-export type SubProps = { onSubmit: (value: Date) => void };
+export type SubProps = {
+  onSubmit: (value: Date) => void;
+  timezone: string;
+  setTimezone: (tz: string) => void;
+};
 
 export type TimeSelectProps = PropsWithChildren<{
   selected: Date | null;
@@ -53,4 +60,5 @@ export type ModalProps = {
   onClose: () => void;
   name: string;
   date: Date | null;
+  timezone: string;
 };

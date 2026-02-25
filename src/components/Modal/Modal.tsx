@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { ModalProps } from "../../types/types";
 
-export default function Modal({ onClose, name, date }: ModalProps) {
+export default function Modal({ onClose, name, date, timezone }: ModalProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -65,7 +65,7 @@ export default function Modal({ onClose, name, date }: ModalProps) {
                 src="/public/earth-icon.svg"
                 alt="person"
               />
-              <li className="gray-text">European Time</li>
+              <li className="gray-text">{timezone}</li>
             </div>
           </ul>
         </div>

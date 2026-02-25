@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DateSelect from "./DateSelect";
 import CalendarGrid from "./CalendarGrid";
 import TimeList from "./TimeList";
 import clsx from "clsx";
 import type { SubProps } from "../../types/types";
 
-const Calendar = ({ onSubmit }: SubProps) => {
+const Calendar = ({ onSubmit, timezone, setTimezone }: SubProps) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
-  (window as any).setCurrentDate = setCurrentDate;
-
-  useEffect(() => setSelectedDate(null), [currentDate]);
 
   return (
     <div
@@ -24,8 +20,10 @@ const Calendar = ({ onSubmit }: SubProps) => {
         <DateSelect current={currentDate} setCurrentDate={setCurrentDate} />
         <CalendarGrid
           current={currentDate}
-          onSelect={setSelectedDate}
           selected={selectedDate}
+          onSelect={setSelectedDate}
+          timezone={timezone}
+          onTimezoneChange={setTimezone}
         />
       </div>
       <div

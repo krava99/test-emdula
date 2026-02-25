@@ -8,7 +8,13 @@ import {
 import { format, isSameDay, isToday } from "date-fns";
 import type { GridProps } from "../../types/types";
 
-const CalendarGrid = ({ current, onSelect, selected }: GridProps) => {
+const CalendarGrid = ({
+  current,
+  onSelect,
+  selected,
+  timezone,
+  onTimezoneChange,
+}: GridProps) => {
   const dayNames = getShortDayNames();
   const days = getCalendarDays(current);
 
@@ -68,14 +74,16 @@ const CalendarGrid = ({ current, onSelect, selected }: GridProps) => {
             className="w-3.5 h-3.5 "
           />
           <select
-            id="timezone"
-            name="timezone"
-            className="font-medium text-[14px]"
+            value={timezone}
+            onChange={(e) =>
+              onTimezoneChange(e.target.options[e.target.selectedIndex].text)
+            }
+            className="font-medium text-[14px] bg-[#17121D]"
           >
-            <option value="Europe/Kyiv">Central European Time</option>
-            <option value="Europe/London">Europe/London</option>
-            <option value="America/New_York">America/New York</option>
-            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option>European Time</option>
+            <option>Europe/London</option>
+            <option>America/New York</option>
+            <option>Asia/Tokyo</option>
           </select>
         </div>
         <p className="text-center font-medium text-[14px] text-[#E9AC32]">

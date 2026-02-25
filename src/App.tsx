@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import Calendar from "./components/Calendar/Calendar";
 
 import { ConsultationForm } from "./components/ConsultationForm/ConsultationForm";
@@ -27,16 +27,23 @@ function reducer(state: State, action: Action): State {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [timezone, setTimezone] = useState("European Time");
 
   const setDate = (date: Date) => dispatch({ type: "SET_DATE", payload: date });
 
   return (
     <div className="mt-10 inter-text ">
-      <ConsultationHeader date={state.date} />
-      {state.page === "calendar" && <Calendar onSubmit={setDate} />}
+      <ConsultationHeader date={state.date} timezone={timezone} />
+      {state.page === "calendar" && (
+        <Calendar
+          onSubmit={setDate}
+          timezone={timezone}
+          setTimezone={setTimezone}
+        />
+      )}
 
       {state.page === "details" && (
-        <ConsultationForm selectedDate={state.date} />
+        <ConsultationForm selectedDate={state.date} timezone={timezone} />
       )}
     </div>
   );

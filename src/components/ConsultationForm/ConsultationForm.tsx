@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import type { FormProps } from "../../types/types";
 
-export const ConsultationForm = ({ selectedDate }: FormProps) => {
+export const ConsultationForm = ({ selectedDate, timezone }: FormProps) => {
   const [showGuestInput, setShowGuestInput] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
@@ -76,7 +76,12 @@ export const ConsultationForm = ({ selectedDate }: FormProps) => {
             Schedule Event
           </button>
           {isModalOpen && (
-            <Modal onClose={closeModal} name={name} date={selectedDate} />
+            <Modal
+              onClose={closeModal}
+              name={name}
+              date={selectedDate}
+              timezone={timezone}
+            />
           )}
           <h3 className="text-center font-medium text-sm text-[#E9AC32]">
             Cookie settings
